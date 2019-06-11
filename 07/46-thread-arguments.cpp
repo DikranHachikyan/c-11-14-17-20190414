@@ -18,13 +18,17 @@ class Sleeper {
         }
 };
 
+
 int main(){
     
     std::cout<<std::endl;
     int value = 1000;
 
     std::thread t1(Sleeper(value), 5);
+
     t1.join();
+    //std::this_thread::sleep_for(std::chrono::seconds(1));
+    //t1.detach();
     std::cout<< "value:" << value << std::endl; 
     std::cout<<std::endl;
     return 0;
