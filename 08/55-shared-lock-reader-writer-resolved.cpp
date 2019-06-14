@@ -9,9 +9,10 @@
 std::map<std::string, int> contacts { {"Anna",1111}, {"John",2222},{"Maria",3333}};
 
 std::shared_timed_mutex conactsMtx;
+std::mutex output_mutex;
 
 void addContact( const std::string &name , int phone){
-    std::lock_guard<std::shared_timed_mutex> writeLock { conactsMtx};
+    std::unique_lock<std::shared_timed_mutex> writeLock { conactsMtx};
 
     std::cout << "\nStart update " << name;
     
